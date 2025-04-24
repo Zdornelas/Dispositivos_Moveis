@@ -4,8 +4,8 @@ Este é um projeto básico feito com Expo para fins de aprendizado.
 
 ## Exercícios
 
-![Exercício1](https://freeimage.host/i/3MzR4ix)
+![Exercício1](https://github.com/Zdornelas/Dispositivos_Moveis/issues/4)
 
-![Exercício2](https://freeimage.host/i/3MzRPKQ)
+![Exercício2](https://github.com/Zdornelas/Dispositivos_Moveis/issues/5)
 
-![Exercício3](https://freeimage.host/i/3MzRilV)
+![Exercício3](https://github.com/Zdornelas/Dispositivos_Moveis/issues/6)
