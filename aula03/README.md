@@ -15,7 +15,7 @@ Este projeto é parte do curso de programação de dispositivos móveis
 1. **Clone o repositório:**
 
 ```bash
-git clone 
+git clone https://github.com/Zdornelas/Dispositivos_Moveis.git
 cd Dispositivos_Moveis/aula03
 ```
 
@@ -48,10 +48,10 @@ aula03/
 ```
 
 ##  Capturas de Tela
-![Exercício1](https://freeimage.host/i/3Mzwlus)
+![Captura01](https://github.com/Zdornelas/Dispositivos_Moveis/issues/7)
 
-![Exercício2](https://freeimage.host/i/3Mzw1tf)
+![Captura02](https://github.com/Zdornelas/Dispositivos_Moveis/issues/8)
 
-![Exercício3](https://freeimage.host/i/3Mzw0wG)
+![Captura03](https://github.com/Zdornelas/Dispositivos_Moveis/issues/9)
 
-![Exercício4](https://freeimage.host/i/3Mzwc9n)
+![Captura04](https://github.com/Zdornelas/Dispositivos_Moveis/issues/10)
