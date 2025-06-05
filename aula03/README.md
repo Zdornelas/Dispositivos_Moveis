@@ -1,14 +1,19 @@
-# Aula 03 – React Native
+# Aplicativo Mobile de Gerenciamento de Cursos
 
-Este projeto é parte do curso de programação de dispositivos móveis
+## Visão Geral
 
-## 🚀 Tecnologias Utilizadas
+Este é um aplicativo mobile desenvolvido com React Native e Expo que implementa um sistema de gerenciamento de cursos. O aplicativo utiliza Firebase para autenticação de usuários e armazenamento de dados (Firestore).
 
-- [React Native](https://reactnative.dev/)
-- [Expo](https://expo.dev/)
-- [React Navigation](https://reactnavigation.org/)
-- [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
-- [Firebase](https://firebase.google.com/)
+## Tecnologias Principais
+
+- *React Native*: Framework para desenvolvimento de aplicações móveis
+- *Expo*: Plataforma para facilitar o desenvolvimento React Native
+- *Firebase*: 
+  - Authentication: Gerenciamento de usuários
+  - Firestore: Banco de dados NoSQL para armazenamento dos cursos
+- *React Navigation*: Biblioteca para navegação entre telas
+  - Stack Navigator: Navegação em pilha
+  - Bottom Tab Navigator: Menu de navegação inferior
 
 ## Como Executar o Projeto
 
@@ -37,7 +42,9 @@ npx expo start
 aula03/
 ├── assets/             
 ├── src/               
-│   ├── components/     
+│   ├── config/
+│   ├── context
+│   ├── services/
 │   ├── screens/        
 │   └── navigation/     
 ├── App.js              
