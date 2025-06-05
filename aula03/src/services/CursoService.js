@@ -1,16 +1,34 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import AppNavigation from './src/navigation/AppNavigation'
-import { AuthProvider } from './src/context/AuthContext'
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
+import { db } from '../config/firebaseConfig';
 
-const App = () => {
-  return (
-      <NavigationContainer>
-        <AuthProvider>
-          <AppNavigation />
-        </AuthProvider>
-      </NavigationContainer>
+const cursosRef = collection(db, 'cursos');
+
+// Buscar todos os cursos (R)
+export const getCursos = async (userId) => {
+  const q = query(cursosRef, where('userId', '==', userId))
+  const snapshot = await getDocs(q)
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+}
+
+// Adicionar um novo curso (C)
+export const adicionarCurso = async (curso, userId) => {
+  const docRef = await addDoc(cursosRef,
+    {
+      ...curso,
+      userId
+    }
   )
-} 
+  return docRef.id
+}
 
-export default App
+// Atualizar curso existente (U)
+export const atualizarCurso = async (id, novosDados) => {
+  const cursoRef = doc(db, 'cursos', id);
+  await updateDoc(cursoRef, novosDados);
+}
+
+// Deletar curso por ID (D)
+export const deletarCurso = async (id) => {
+  const cursoRef = doc(db, 'cursos', id);
+  await deleteDoc(cursoRef);
+}
