@@ -1,9 +1,16 @@
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../config/firebaseConfig';
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import AppNavigation from './src/navigation/AppNavigation'
+import { AuthProvider } from './src/context/AuthContext'
 
-const cursosRef = collection(db, 'cursos');
+const App = () => {
+  return (
+      <NavigationContainer>
+        <AuthProvider>
+          <AppNavigation />
+        </AuthProvider>
+      </NavigationContainer>
+  )
+} 
 
-export const getCursos = async () => {
-  const snapshot = await getDocs(cursosRef);
-  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-}
+export default App
