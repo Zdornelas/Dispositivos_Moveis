@@ -1,18 +1,53 @@
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
-import React from 'react'
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, Button } from 'react-native'
+import React, { useContext, useCallback, useState } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import { getCursos, deletarCurso } from '../services/CursoService'
+import { AuthContext } from '../context/AuthContext'
 
 const HomeScreen = ({ navigation }) => {
 
-  const items = [
-    { id: 1, name: 'Curso de React Native', description: 'Aprenda a criar apps para iOS e Android.' },
-    { id: 2, name: 'Curso de Java e Spring Boot', description: 'Construa APIs robustas com Java e Spring.' },
-    { id: 3, name: 'Curso de AWS', description: 'Domine os serviços da AWS e obtenha certificação.' },
-    { id: 4, name: 'Curso de Python para Data Science', description: 'Analise dados com Python e Pandas.' },
-  ]
+  const [items, setItems] = useState([])
+  const { user } = useContext(AuthContext)
+
+  const carregarCursos = async () => {
+    const cursos = await getCursos(user.uid)
+    setItems(cursos)
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      carregarCursos()
+    }, [])
+  )
+
+  const confirmarExclusao = (id) => {
+    Alert.alert(
+      'Confirmar',
+      'Você tem certeza que deseja excluir este curso?',
+      [
+        {
+          text: 'Cancelar',
+          style: 'cancel'
+        },
+        {
+          text: 'Excluir',
+          style: 'destructive',
+          onPress: async () => {
+            await deletarCurso(id)
+            carregarCursos()
+          }
+        }
+      ]
+    )
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>📚 Cursos Disponíveis</Text>
+      <Button
+        title="Adicionar Curso"
+        onPress={() => navigation.navigate('CursoForm')}
+      />
       <FlatList
         data={items}
         keyExtractor={item => item.id}
@@ -27,6 +62,7 @@ const HomeScreen = ({ navigation }) => {
           >
             <Text style={styles.itemTitle}>{item.name}</Text>
             <Text style={styles.itemDescription}>{item.description}</Text>
+            <Button title="🗑️" onPress={() => confirmarExclusao(item.id)} color='#d9534f' />
           </TouchableOpacity>
         )}
       />
